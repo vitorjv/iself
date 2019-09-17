@@ -1,5 +1,7 @@
 {
   "name": "iSelf",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

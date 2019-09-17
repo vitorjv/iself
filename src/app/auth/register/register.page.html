@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="backbar">
+    <a (click)="navController.back()">
+      <fa-icon [icon]="back" size="2x" [styles]="{'stroke': 'darkblue', 'color': '#3880ff'}"></fa-icon>
+    </a>
+  </div>
+  <div class="logo">
+    <ion-img class="logo-img" src="../../../assets/img/prato sem fundo.png"></ion-img>
+  </div>
+  <ion-progress-bar type="indeterminate" *ngIf="carregando"></ion-progress-bar>
+  <!-- <div text-center>
+    <fa-icon [icon]="user" size="8x" [styles]="{'stroke': 'darkblue', 'color': '#3880ff'}"></fa-icon>
+  </div> -->
+  <div padding text-center class="nome-sistema">iSelf</div>
+
+  <form #form="ngForm" (ngSubmit)="registrar(form)">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div padding>
+            <ion-item>
+              <!-- <ion-label position="floating">Nome</ion-label> -->
+              <ion-input name="nome" placeholder="Nome" type="text" ngModel required></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="erros.nome">{{ erros.nome }}</div>
+            <ion-item>
+              <!-- <ion-label position="floating">CPF</ion-label> -->
+              <ion-input name="cpf" placeholder="CPF" type="number" ngModel required></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="erros.cpf">{{ erros.cpf }}</div>
+            <ion-item>
+              <!-- <ion-label position="floating">E-mail</ion-label> -->
+              <ion-input name="email" placeholder="E-mail" type="email" ngModel required></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="erros.email">{{ erros.email }}</div>
+            <ion-item>
+              <!-- <ion-label position="floating">Senha</ion-label> -->
+              <ion-input name="password" placeholder="Senha" type="password" ngModel required></ion-input>
+            </ion-item>
+            <div class="error-message" *ngIf="erros.password">{{ erros.password }}</div>
+          </div>
+          <div padding>
+            <ion-button size="large" type="submit" [disabled]="form.invalid || carregando" expand="block">Cadastrar</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

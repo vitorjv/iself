@@ -1,0 +1,20 @@
+.logo-img {
+    height: 50vh;
+    background-color: whitesmoke;
+  }
+
+.nome-sistema {
+    position: absolute;
+    left: 50%;
+    margin-left: -50px;
+    bottom: 50vh;
+    font-family: Merriweather, Impact, Serif;
+    font-size: xx-large;
+  }   
+
+  .backbar {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+}

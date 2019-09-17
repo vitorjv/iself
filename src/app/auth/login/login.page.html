@@ -1,0 +1,41 @@
+<ion-content>
+  <div class="logo">
+    <ion-img class="logo-img" src="../../../assets/img/prato sem fundo.png"></ion-img>
+  </div>
+  <ion-progress-bar type="indeterminate" *ngIf="carregando"></ion-progress-bar>
+  <!-- <div padding text-center>
+    <fa-icon [icon]="user" size="8x" [styles]="{'stroke': 'darkblue', 'color': '#3880ff'}"></fa-icon>
+  </div> -->
+  
+  <div padding text-center class="nome-sistema">iSelf</div>
+  <form #form="ngForm" (ngSubmit)="login(form)">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <!-- <div text-center>
+            <h3>Entrar</h3>
+          </div> -->
+          <div padding>
+            <ion-item>
+              <ion-input name="email" type="email" placeholder="Seu e-mail" ngModel required></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input name="password" type="password" placeholder="Senha" ngModel required></ion-input>
+            </ion-item>
+          </div>
+          <div text-center class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+          <div padding text-center *ngIf="emailNaoVerificado">
+            <a (click)="enviarEmailRecuperacao()">Reenviar e-mail de verificação</a>
+          </div>
+          <div padding>
+            <ion-button size="large" type="submit" [disabled]="form.invalid || carregando" expand="block">Login</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+      <div text-center>
+        Caso não possua um cadastro, <a routerLink='/register'>
+          cadastre-se!</a>
+      </div>
+    </ion-grid>
+  </form>
+</ion-content>
