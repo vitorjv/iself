@@ -10,6 +10,8 @@ import { AuthService } from '../auth/auth.service';
 })
 export class HomePage {
 
+  telaAtiva = 'cardapio';
+
   constructor(private qrScanner: QRScanner,
     private alertController: AlertController,
     private authService: AuthService,
@@ -71,5 +73,9 @@ export class HomePage {
     this.authService.logout()
       .then(resp => this.navController.navigateRoot('login'))
       .catch(error => console.log(error));
+  }
+
+  segmentChanged(event) {
+    this.telaAtiva = event;
   }
 }
