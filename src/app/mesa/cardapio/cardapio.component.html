@@ -7,16 +7,16 @@
   <ion-title>Nome do Restaurante</ion-title>
 </ion-toolbar>
 <ion-segment scrollable (ionChange)="toggleView($event)" value="entrada">
-  <ion-segment-button value="entrada">
+  <ion-segment-button value="E" (click)="returnDishes('E')">
     <ion-label>ENTRADA</ion-label>
   </ion-segment-button>
-  <ion-segment-button value="principal">
+  <ion-segment-button value="P" (click)="returnDishes('P')">
     <ion-label>PRATO PRINCIPAL</ion-label>
   </ion-segment-button>
-  <ion-segment-button value="sobremesa">
+  <ion-segment-button value="S" (click)="returnDishes('S')">
     <ion-label>SOBREMESA</ion-label>
   </ion-segment-button>
-  <ion-segment-button value="bebida">
+  <ion-segment-button value="B" (click)="returnDishes('B')">
     <ion-label>BEBIDAS</ion-label>
   </ion-segment-button>
 </ion-segment>
@@ -25,9 +25,9 @@
     <ion-item (click)="presentModal()">
       <ion-label>Pokémon Yellow</ion-label>
     </ion-item>
-    <ion-item>
+    <ion-item (click)="presentModal()">
       <ion-label>Mega Man X</ion-label>
-    </ion-item>
+    </ion-item >
     <ion-item-sliding>
       <ion-item>
         <ion-label>The Legend of Zelda</ion-label>
