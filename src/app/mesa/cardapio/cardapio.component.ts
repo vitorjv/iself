@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController, IonList } from '@ionic/angular';
-import { ContaComponent } from '../conta/conta.component';
-import {firebaseConfig} from '../../../environments/environment';
+import { ModalController, LoadingController } from '@ionic/angular';
+
 @Component({
   selector: 'app-cardapio',
   templateUrl: './cardapio.component.html',
@@ -10,16 +9,18 @@ import {firebaseConfig} from '../../../environments/environment';
 export class CardapioComponent implements OnInit {
 
   activedView = 'entrada';
-  constructor(public modalController: ModalController) {
+  listaItens = [];
+  constructor(public modalController: ModalController, public loadingController: LoadingController) {
+    console.log(this);
   }
   
-  async presentModal() {
+  async presentModal(item) {
     const modal = await this.modalController.create({
       component: ItemDetail,
       componentProps: {
-        'firstName': 'Davi',
-        'lastName': 'Adams',
-        'middleInitial': 'N'
+        'descricao': item.descricao,
+        'preco': item.preco,
+        'quantidade': item.quantidade
       }
     });
     return await modal.present();
@@ -38,22 +39,32 @@ export class CardapioComponent implements OnInit {
         messagingSenderId: "578892561584",
         appId: "1:578892561584:web:aa1e1d30596a36a23c4f75"
       });
-    }
+    } 
     var list = new Array;
     var db = firebase.firestore();
+    const a = await this.loadingController.create({
+    });
+    await a.present();
     db.collection("itens").where("tipo", "==", tipo)
     .get()
     .then(function(querySnapshot) {
+      console.log(this);
         querySnapshot.forEach(function(doc) {
+          list.push(doc.data());
           console.log(doc.id, " => ", doc.data());
         });
-    })
+        a.dismiss();
+    }) 
     .catch(function(error) {
         console.log("Error getting documents: ", error);
     });
-  }
+    this.listaItens = list;
+    console.log(this.listaItens); 
+  } 
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.returnDishes('E');
+  }
 
   toggleView(event) {
     this.activedView = event.detail.value;
@@ -62,14 +73,14 @@ export class CardapioComponent implements OnInit {
 
 @Component({
   selector: 'item-detail',
-  template: '<h1>{{ firstName }} {{ lastName }}</h1>',
+  template: '<h1>Descrição: {{ descricao }} Preço: {{ preco }} Quantidade: {{quantidade}}</h1>',
   styles: ['./cardapio.component.scss'],
 })
 export class ItemDetail implements OnInit {
 
-  @Input() firstName: string;
-  @Input() lastName: string;
-  @Input() middleInitial: string;
+  @Input() descricao: string;
+  @Input() preco: string;
+  @Input() quantidade: string;
 
   ngOnInit() {}
 
