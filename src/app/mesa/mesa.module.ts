@@ -8,6 +8,8 @@ import { ContaComponent } from './conta/conta.component';
 import { IonicModule } from '@ionic/angular';
 
 import { MesaPage } from './mesa.page';
+import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
+import { MesaService } from './mesa.service';
 
 const routes: Routes = [
   {
@@ -28,6 +30,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   entryComponents: [ItemDetail],
-  declarations: [MesaPage, CardapioComponent, ContaComponent, ItemDetail]
+  declarations: [MesaPage, CardapioComponent, ContaComponent, ItemDetail],
+  providers: [MesaService]
 })
 export class MesaPageModule {}

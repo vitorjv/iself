@@ -13,7 +13,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AuthService } from './auth/auth.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,6 +21,7 @@ import { AuthService } from './auth/auth.service';
   imports: [BrowserModule, FontAwesomeModule, AngularFireModule.initializeApp(firebaseConfig.firebase), 
     IonicModule.forRoot(), AppRoutingModule],
   providers: [
+    AngularFirestore,
     AngularFireAuth,
     StatusBar,
     SplashScreen,

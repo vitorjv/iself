@@ -6,24 +6,35 @@
   </ion-buttons>
   <ion-title>Nome do Restaurante</ion-title>
 </ion-toolbar>
-<ion-segment scrollable (ionChange)="toggleView($event)" value="entrada">
-  <ion-segment-button value="E" (click)="returnDishes('E')">
+<ion-segment scrollable (ionChange)="toggleView($event)">
+  <ion-segment-button value="E" checked>
     <ion-label>ENTRADA</ion-label>
   </ion-segment-button>
-  <ion-segment-button value="P" (click)="returnDishes('P')">
+  <ion-segment-button value="P">
     <ion-label>PRATO PRINCIPAL</ion-label>
   </ion-segment-button>
-  <ion-segment-button value="S" (click)="returnDishes('S')">
+  <ion-segment-button value="S">
     <ion-label>SOBREMESA</ion-label>
   </ion-segment-button>
-  <ion-segment-button value="B" (click)="returnDishes('B')">
+  <ion-segment-button value="B">
     <ion-label>BEBIDAS</ion-label>
   </ion-segment-button>
 </ion-segment>
 <ion-content>
-  <ion-list> 
+  <ion-list>
     <ion-item *ngFor="let item of listaItens">
-      <ion-label (click)="presentModal(item)">{{ item.descricao }}</ion-label>
+      <ion-label (click)="presentModal(item)">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+                {{ item.descricao }}
+            </ion-col>
+            <ion-col align-self-end>
+                {{ item.preco }}
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-label>
     </ion-item>
-  </ion-list>  
+  </ion-list>
 </ion-content>
