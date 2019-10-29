@@ -2,6 +2,7 @@ import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Component } from '@angular/core';
 import { AlertController, NavController, MenuController } from '@ionic/angular';
 import { AuthService } from '../auth/auth.service';
+import { MesaService } from '../mesa/mesa.service';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +16,7 @@ export class HomePage {
   constructor(private qrScanner: QRScanner,
     private alertController: AlertController,
     private authService: AuthService,
+    private mesaService: MesaService,
     private menu: MenuController,
     private navController: NavController) { }
 
@@ -77,5 +79,13 @@ export class HomePage {
 
   segmentChanged(event) {
     this.telaAtiva = event;
+  }
+
+  lerQrCode() {
+    // routerLink="/mesa/VxQu4RR9HwQyUrZvKnL5/cardapio"
+    this.mesaService.criarConta("VxQu4RR9HwQyUrZvKnL5").then(
+      resp => this.navController.navigateRoot(`mesa/${resp.id}`)
+    )
+      ;
   }
 }

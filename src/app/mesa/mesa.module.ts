@@ -2,18 +2,18 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { CardapioComponent, ItemDetail } from './cardapio/cardapio.component';
+import { CardapioComponent, ItemDetail, ConfirmacaoPedido } from './cardapio/cardapio.component';
 import { ContaComponent } from './conta/conta.component';
 
 import { IonicModule } from '@ionic/angular';
 
 import { MesaPage } from './mesa.page';
-import { AngularFireDatabase, AngularFireDatabaseModule } from 'angularfire2/database';
 import { MesaService } from './mesa.service';
+import { MbscModule } from '@mobiscroll/angular';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':conta',
     component: MesaPage,
     children: [
       { path: 'cardapio', component: CardapioComponent },
@@ -27,10 +27,11 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    MbscModule,
     RouterModule.forChild(routes)
-  ],
-  entryComponents: [ItemDetail],
-  declarations: [MesaPage, CardapioComponent, ContaComponent, ItemDetail],
+  ], 
+  entryComponents: [ItemDetail, ConfirmacaoPedido],
+  declarations: [MesaPage, CardapioComponent, ContaComponent, ItemDetail, ConfirmacaoPedido],
   providers: [MesaService]
 })
 export class MesaPageModule {}

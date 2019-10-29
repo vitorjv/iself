@@ -1,0 +1,26 @@
+<ion-header translucent>
+    <ion-toolbar>
+        <ion-buttons slot="secondary">
+            <ion-button (click)="fecharModal()">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>,
+<ion-content fullscreen>
+    <ion-card>
+        <img [src]="item.imagem" />
+        <ion-card-header>
+            <ion-card-subtitle>R$ {{ item.preco }}</ion-card-subtitle>
+            <ion-card-title>{{ item.descricao }}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            {{ item.info }}
+        </ion-card-content>
+    </ion-card>
+    <div class="ion-text-center">
+        <ion-button color="light" (click)="diminuir()" [disabled]="quantidade<1">-</ion-button>
+        <span padding>{{ quantidade }}</span>
+        <ion-button color="light" (click)="aumentar()" [disabled]="quantidade>8">+</ion-button>
+    </div>
+</ion-content>

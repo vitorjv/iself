@@ -3,6 +3,7 @@ import { faCoffee, faUserCircle, faArrowLeft } from '@fortawesome/free-solid-svg
 import { AuthService } from 'src/app/auth/auth.service';
 import { NavController, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { FireError } from 'src/app/model';
 
 @Component({
   selector: 'app-login',
