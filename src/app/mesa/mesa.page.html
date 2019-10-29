@@ -1,13 +1,14 @@
 <ion-tabs color="secondary">
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="cardapio">
-      <ion-icon name="list-box"></ion-icon>
-      <ion-label>Cardápio</ion-label>
-      <!-- <ion-badge>6</ion-badge> -->
-    </ion-tab-button>
-    <ion-tab-button tab="conta">
-      <ion-icon name="cash"></ion-icon>
-      <ion-label>Conta</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="cardapio">
+        <ion-icon name="list-box"></ion-icon>
+        <ion-label>Cardápio</ion-label>
+        <!-- <ion-badge>6</ion-badge> -->
+      </ion-tab-button>
+      <ion-tab-button tab="conta">
+        <ion-icon name="cash"></ion-icon>
+        <ion-label>Conta</ion-label>
+        <ion-badge *ngIf="qtdItensConta > 0">{{ qtdItensConta }}</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
 </ion-tabs>

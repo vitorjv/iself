@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faUserCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/auth/auth.service';
 import { NavController } from '@ionic/angular';
+import { FireError } from 'src/app/model';
 
 @Component({
   selector: 'app-register',
