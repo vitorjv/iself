@@ -9,7 +9,6 @@ import { IonicModule } from '@ionic/angular';
 
 import { MesaPage } from './mesa.page';
 import { MesaService } from './mesa.service';
-import { MbscModule } from '@mobiscroll/angular';
 
 const routes: Routes = [
   {
@@ -27,7 +26,6 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    MbscModule,
     RouterModule.forChild(routes)
   ], 
   entryComponents: [ItemDetail, ConfirmacaoPedido],
