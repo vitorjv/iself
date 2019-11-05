@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, DocumentReference, DocumentData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { Pedido, Conta, Restaurante } from '../model';
+import { Pedido } from '../model';
 
 @Injectable({
   providedIn: 'root'

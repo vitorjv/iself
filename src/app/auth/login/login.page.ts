@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faCoffee, faUserCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/auth/auth.service';
 import { NavController, ToastController } from '@ionic/angular';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -62,13 +62,13 @@ export class LoginPage implements OnInit {
   handleErro(erro: FireError) {
     this.carregando = false;
     if (erro.code.includes('invalid-email')) {
-      this.errorMessage = erro.message;
+      this.errorMessage = 'Email inválido.';
     }
     if (erro.code.includes('user-not-found')) {
-      this.errorMessage = erro.message;
+      this.errorMessage = 'Usuário não encontrado, favor fazer o cadastro no app.';
     }
     if (erro.code.includes('wrong-password')) {
-      this.errorMessage = erro.message;
+      this.errorMessage = 'Senha errada, favor tentar novamente.';
     }
   }
 
