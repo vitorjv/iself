@@ -62,9 +62,9 @@ export class ContaComponent implements OnInit {
     this.router.navigateByUrl('/home');
   }
 
-  get nomeRestaurante() {
+  get restaurante() {
     if (this.service && this.service.restaurante)
-      return this.service.restaurante.nome;
+      return this.service.restaurante;
 
     return 'Carregando ...'
   }

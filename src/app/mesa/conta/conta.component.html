@@ -1,6 +1,6 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>{{ nomeRestaurante }}</ion-title>
+    <ion-title>{{ restaurante.Nome }}</ion-title>
     <ion-buttons slot="primary">
       <ion-button>
           <ion-icon slot="icon-only" name="bowtie"></ion-icon>
@@ -12,12 +12,12 @@
   <ion-item>
     <ion-label style="text-align: center">
       <span class="nome-conta">
-        Restaurante Chez Vitor<br>
+        {{ restaurante.Nome }}<br>
       </span>
       <span class="info-conta">
-        Rua Santos Dumont, 1315, Aldeota<br>
-        CNPJ 06.272.570/0001-05 - Insc. Est: 77.732.91-2<br>
-        No Contrl: 12101 - Tel (85) 32121231
+        Rua {{ restaurante.Rua }}, {{ restaurante.Bairro }}<br>
+        CNPJ {{ restaurante.CNPJ }} - Insc. {{ restaurante.IEstadual }}<br>
+        No Contrl: 12101 - Tel {{ restaurante.Telefone }}
       </span>
     </ion-label>
   </ion-item>
