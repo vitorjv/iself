@@ -72,6 +72,10 @@ export class LoginPage implements OnInit {
     }
   }
 
+  get nomeApp() {
+    return 'Serve Yourself';
+  }
+  
   async toastEmailVerificacao() {
     const toast = await this.toastController.create({
       message: 'Verifique seu endereço de e-mail para ativar o cadastro.',

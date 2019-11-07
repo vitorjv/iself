@@ -81,6 +81,10 @@ export class HomePage {
     this.telaAtiva = event;
   }
 
+  get nomeApp() {
+    return 'Serve Yourself';
+  }
+
   lerQrCode() {
     // routerLink="/mesa/VxQu4RR9HwQyUrZvKnL5/cardapio"
     this.mesaService.criarConta("VxQu4RR9HwQyUrZvKnL5").then(

@@ -71,7 +71,7 @@ export class CardapioComponent implements OnInit {
 
   get nomeRestaurante() {
     if (this.service && this.service.restaurante)
-      return this.service.restaurante.nome;
+      return this.service.restaurante.Nome;
 
     return 'Carregando ...'
   }

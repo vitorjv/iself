@@ -45,6 +45,10 @@ export class RegisterPage implements OnInit {
     return true;
   }
 
+  get nomeApp(){
+    return 'Serve Yourself';
+  }
+
   onSucesso(resp) {
     this.carregando = false;
     this.authService.sendVerificationMail()

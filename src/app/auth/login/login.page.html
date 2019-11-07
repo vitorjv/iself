@@ -1,13 +1,13 @@
 <ion-content>
   <div class="logo">
-    <ion-img class="logo-img" src="../../../assets/img/prato sem fundo.png"></ion-img>
+    <ion-img class="logo-img" src="../../../assets/img/waiter.png"></ion-img>
   </div>
   <ion-progress-bar type="indeterminate" *ngIf="carregando"></ion-progress-bar>
   <!-- <div padding text-center>
     <fa-icon [icon]="user" size="8x" [styles]="{'stroke': 'darkblue', 'color': '#3880ff'}"></fa-icon>
   </div> -->
   
-  <div padding text-center class="nome-sistema">iSelf</div>
+  <div padding text-center class="nome-sistema">{{ nomeApp }}</div>
   <form #form="ngForm" (ngSubmit)="login(form)">
     <ion-grid>
       <ion-row color="primary" justify-content-center>
