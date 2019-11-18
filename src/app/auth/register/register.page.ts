@@ -46,7 +46,7 @@ export class RegisterPage implements OnInit {
   }
 
   get nomeApp(){
-    return 'Serve Yourself';
+    return 'iSelf';
   }
 
   onSucesso(resp) {

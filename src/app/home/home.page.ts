@@ -1,8 +1,10 @@
 import { QRScanner, QRScannerStatus } from '@ionic-native/qr-scanner/ngx';
 import { Component } from '@angular/core';
-import { AlertController, NavController, MenuController } from '@ionic/angular';
+import { AlertController, NavController, MenuController, ToastController } from '@ionic/angular';
 import { AuthService } from '../auth/auth.service';
-import { MesaService } from '../mesa/mesa.service';
+import { first } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
   selector: 'app-home',
@@ -12,13 +14,32 @@ import { MesaService } from '../mesa/mesa.service';
 export class HomePage {
 
   telaAtiva = 'cardapio';
+  private scanSub: any;
+  ionApp = <HTMLElement>document.getElementsByTagName('ion-app')[0];
 
   constructor(private qrScanner: QRScanner,
     private alertController: AlertController,
     private authService: AuthService,
-    private mesaService: MesaService,
+    public toastCtrl: ToastController,
+    private route: Router,
     private menu: MenuController,
-    private navController: NavController) { }
+    private navController: NavController,
+    public afAuth: AngularFireAuth) { }
+
+  ionViewWillEnter() {
+    this.redirecionarUsuarioNaoLogado();
+  }
+
+  isLoggedIn() {
+    return this.afAuth.authState.pipe(first()).toPromise();
+  }
+
+  async redirecionarUsuarioNaoLogado() {
+    const user = await this.isLoggedIn();
+    if (!user) {
+        this.logout();
+    }
+  }
 
   openFirst() {
     this.menu.enable(true, 'first');
@@ -45,32 +66,6 @@ export class HomePage {
     await alert.present();
   }
 
-  leitorQrCode() {
-
-    // Optionally request the permission early
-    this.qrScanner.prepare()
-      .then((status: QRScannerStatus) => {
-        if (status.authorized) {
-          // camera permission was granted
-          // start scanning
-          const scanSub = this.qrScanner.scan().subscribe((text: string) => {
-            console.log('Scanned something', text);
-
-            this.qrScanner.hide(); // hide camera preview
-            scanSub.unsubscribe(); // stop scanning
-          });
-        } else if (status.denied) {
-
-          // camera permission was permanently denied
-          // you must use QRScanner.openSettings() method to guide the user to the settings page
-          // then they can grant the permission from there
-        } else {
-          // permission was denied, but not permanently. You can ask for permission again at a later time.
-        }
-      })
-      .catch((e: any) => console.log('Error is', e));
-  }
-
   logout() {
     this.authService.logout()
       .then(resp => this.navController.navigateRoot('login'))
@@ -82,14 +77,11 @@ export class HomePage {
   }
 
   get nomeApp() {
-    return 'Serve Yourself';
+    return 'iSelf';
   }
 
   lerQrCode() {
-    // routerLink="/mesa/VxQu4RR9HwQyUrZvKnL5/cardapio"
-    this.mesaService.criarConta("VxQu4RR9HwQyUrZvKnL5").then(
-      resp => this.navController.navigateRoot(`mesa/${resp.id}`)
-    )
-      ;
+    this.route.navigateByUrl('qr-scanner');
   }
+
 }

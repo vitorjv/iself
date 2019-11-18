@@ -73,7 +73,7 @@ export class LoginPage implements OnInit {
   }
 
   get nomeApp() {
-    return 'Serve Yourself';
+    return 'iSelf';
   }
   
   async toastEmailVerificacao() {

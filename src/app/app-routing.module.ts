@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'login', loadChildren: './auth/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './auth/register/register.module#RegisterPageModule' },
   { path: 'registered', loadChildren: './auth/registered/registered.module#RegisteredPageModule' },
-  { path: 'mesa', loadChildren: './mesa/mesa.module#MesaPageModule' }
+  { path: 'mesa', loadChildren: './mesa/mesa.module#MesaPageModule' },
+  { path: 'qr-scanner', loadChildren: './qr-scanner/qr-scanner.module#QrScannerPageModule' }
 ];
 
 @NgModule({
